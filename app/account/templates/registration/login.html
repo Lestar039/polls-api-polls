@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Log-in</h1>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class="col-4">{{ form.username }}</div>
+    <div class="col-4">{{ form.password }}</div>
+    <input type="hidden" name="next" value="{{ next }}">
+    <div class="col-4">
+        <button class="btn btn-outline-primary">Log-in</button>
+    </div>
+</form>
+</body>
+</html>
