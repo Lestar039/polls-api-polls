@@ -18,7 +18,7 @@ def polls_list(request):
 @permission_classes((IsAuthenticated,))
 @api_view(['GET'])
 def polls_active_list(request):
-    poll = Poll.objects.filter(finish_date__gte=timezone.now())
+    poll = Poll.objects.filter(start_date__lte=timezone.now()).filter(finish_date__gte=timezone.now())
     serializer = PollSerializer(poll, many=True)
     return Response(serializer.data)
 
